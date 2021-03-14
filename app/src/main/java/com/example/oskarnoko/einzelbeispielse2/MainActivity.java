@@ -2,14 +2,11 @@ package com.example.oskarnoko.einzelbeispielse2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.*;
-import java.net.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,11 +55,62 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-
+        btnCalculate.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        matrikelnr = txtInput.getText().toString();
+                        txtOutput.setText(doCalculation(matrikelnr));
+                    }
+                }
+        );
 
     }
 
+    public String doCalculation(String matrikelnr){
+        String output = "";
 
+        int [] numbers = new int [10];
+
+        for(int i = 0; i <matrikelnr.length(); i++){
+            if(matrikelnr.charAt(i) == '0'){
+                numbers[0]++;
+            }else if(matrikelnr.charAt(i) == '1'){
+                numbers[1]++;
+            }else if(matrikelnr.charAt(i) == '2'){
+                numbers[2]++;
+            }else if(matrikelnr.charAt(i) == '3'){
+                numbers[3]++;
+            }else if(matrikelnr.charAt(i) == '4'){
+                numbers[4]++;
+            }else if(matrikelnr.charAt(i) == '5'){
+                numbers[5]++;
+            }else if(matrikelnr.charAt(i) == '6'){
+                numbers[6]++;
+            }else if(matrikelnr.charAt(i) == '7'){
+                numbers[7]++;
+            }else if(matrikelnr.charAt(i) == '8'){
+                numbers[8]++;
+            }else if(matrikelnr.charAt(i) == '9'){
+                numbers[9]++;
+            }
+        }
+
+        for(int i = 0; i<numbers.length; i+=2){
+            while(numbers[i]>0){
+                numbers[i]--;
+                output+= i;
+            }
+        }
+        for(int i = 1; i<numbers.length; i+=2){
+            while(numbers[i]>0){
+                numbers[i]--;
+                output+= i;
+            }
+        }
+
+        return output;
+    }
 
 
 }
